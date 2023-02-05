@@ -200,8 +200,8 @@ class _VerifyOtpState extends State<VerifyOtp> {
 
                   GestureDetector(
                       onTap: (){
-                        // Fluttertoast.showToast(msg: "Resend API");
-                        reSend();
+                        Fluttertoast.showToast(msg: "Resend API");
+                        // reSend();
                       },
                         child: Center(
                               child: Row(
@@ -241,6 +241,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
         Navigator.pushNamed(context, 'home');
       }else{
         Fluttertoast.showToast(msg: 'Error in submitting details Retry...');
+        Navigator.pushNamed(context, 'home');
       }
 
     }catch(e){
@@ -248,24 +249,36 @@ class _VerifyOtpState extends State<VerifyOtp> {
     }
   }
 
-  Future reSend() async {
-
-    var token;
-    var uri = Uri.parse('https://cinecompass.yuktidea.com/api/v1/otp/resend');
-
-    Map<String,String> headerss = {
-
-      'Accept': 'application/json',
-      'Authorization': 'Bearer $token'
-
-    };
-
-    http.Response resp = await http.get(uri,headers: headerss);
-    if(resp.statusCode == 200){
-      Fluttertoast.showToast(msg: 'success');
-    }else{
-      Fluttertoast.showToast(msg: 'sorry');
-    }
-  }
+  // Future reSend() async {
+  //
+  //   var token;
+  //   List data = [];
+  //   var jj = 'access_token' as int;
+  //   var uri = Uri.parse('https://cinecompass.yuktidea.com/api/v1/otp/resend');
+  //   final String jwt_token = data[jj];
+  //
+  //   // Map<String,String> headerss = {
+  //   //
+  //   //   'Accept': 'application/json',
+  //   //   'Authorization': 'Bearer $jwt_token'
+  //   //
+  //   // };
+  //
+  //   http.Response resp = await http.get(uri,headers: {'Accept': 'application/json','Authorization': 'Bearer $jwt_token'});
+  //
+  //
+  //   final json = jsonDecode(resp.body) as Map;
+  //   final result = json["data"] as List;
+  //
+  //   setState(() {
+  //     data = result;
+  //   });
+  //
+  //   if(resp.statusCode == 200){
+  //     Fluttertoast.showToast(msg: 'success');
+  //   }else{
+  //     Fluttertoast.showToast(msg: 'sorry');
+  //   }
+  // }
 
 }

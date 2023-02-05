@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class SignUp extends StatefulWidget {
@@ -258,13 +259,13 @@ Future signUp(String name, email, phone, password, confirmPassword) async {
 
 Future refresh () async {
 
-    var token;
+
   var uri2 = Uri.parse('https://cinecompass.yuktidea.com/api/v1/refresh');
 
   Map<String,String> headerss = {
 
     'Accept': 'application/json',
-    'Authorization': 'Bearer $token'
+    'Authorization': 'Bearer jwt_token'
 
   };
 
